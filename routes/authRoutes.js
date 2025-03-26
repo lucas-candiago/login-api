@@ -42,5 +42,25 @@ router.post("/login", async (req, res) => {
     }
 })
 
+router.post("/change-password", async (req, res) => {
+    const { email, oldPassword, newPassword } = req.body
+
+    try {
+        const user = await User.findOne({ email })
+        if (!user) return res.status(400).json({ message: "Usuário não encontrado" })
+
+        const oldPasswordMatch = await bcrypt.compare(oldPassword, user.password)
+        if (!oldPasswordMatch) return res.status(400).json({ message: "Sua senha antiga está incorreta!" })
+
+        const hashedNewPassword = await bcrypt.hash(newPassword, 10)
+        user.password = hashedNewPassword
+
+        await user.save()
+        res.status(200).json({ message: "Senha alterada com sucesso!" })
+    } catch (error) {
+        res.status(500).json({ message: "Erro no server" })
+    }
+})
+
 
 module.exports = router;
