@@ -66,6 +66,17 @@ router.post("/change-password", verifyToken, async (req, res) => {
     }
 })
 
+// chanck token endpoint
+router.get("/check", verifyToken, async (req, res) => {
+    try {
+      const user = await User.findById(req.userId);
+      if (!user) return res.status(404).json({ message: "User not allowed" });
+  
+      res.status(200).json(user);
+    } catch (error) {
+      res.status(500).json({ message: "Server error" });
+    }
+  });
 
 // list all users endpoint
 router.get("/all-users", verifyToken, async (req, res) => {
