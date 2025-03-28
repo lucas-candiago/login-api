@@ -1,9 +1,8 @@
 import axios from "axios";
 import { parseCookies } from "nookies";
 
+// function to create a axios instance with the auth token
 export function getAxiosInstance() {
-
-    // Aqui tem que usar uma variavel do Next, pq é publica e pode ser usada no frontend e backend.
     const baseURL = process.env.NEXT_PUBLIC_CLIENT_API_URL
 
     const instance = axios.create({
