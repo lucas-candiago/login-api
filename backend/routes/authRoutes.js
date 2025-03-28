@@ -46,7 +46,7 @@ router.post("/login", async (req, res) => {
 
 
 // change password endpoint
-router.post("/change-password", verifyToken, async (req, res) => {
+router.patch("/change-password", verifyToken, async (req, res) => {
     const { oldPassword, newPassword } = req.body
 
     try {
@@ -69,23 +69,29 @@ router.post("/change-password", verifyToken, async (req, res) => {
 // chanck token endpoint
 router.get("/check", verifyToken, async (req, res) => {
     try {
-      const user = await User.findById(req.userId);
-      if (!user) return res.status(404).json({ message: "User not allowed" });
-  
-      res.status(200).json(user);
+        const user = await User.findById(req.userId);
+        if (!user) return res.status(404).json({ message: "User not allowed" });
+
+        res.status(200).json(user);
     } catch (error) {
-      res.status(500).json({ message: "Server error" });
+        res.status(500).json({ message: "Server error" });
     }
-  });
+});
 
 // list all users endpoint
 router.get("/all-users", verifyToken, async (req, res) => {
     try {
-        const users = await User.find()
+        const usersObjects = await User.find()
+        
+        const users = []
+        
+        usersObjects.map(user => {
+            users.push({ name: user.name, email: user.email, id: user.id })
+        })
 
-        res.status(200).json({data: users})
+        res.status(200).json({ users })
     } catch (error) {
-        res.status(404).json({message: "Server error"})
+        res.status(404).json({ message: "Server error" })
     }
 })
 

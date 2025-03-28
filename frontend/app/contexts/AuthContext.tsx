@@ -70,7 +70,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
     async function change({ oldPassword, newPassword, setErrorMsg }: ChangeData) {
         // This request includes headers because authentication is required to change the password
-        await axios.post("/change-password/", {
+        await axios.patch("/change-password/", {
             oldPassword,
             newPassword
         })

@@ -21,7 +21,7 @@ export default function Menu() {
           </Link>
 
 
-          <Link href={""}>
+          <Link href="/users">
             <li className="p-3 hover:bg-gray-700 rounded-md hover:cursor-pointer flex flex-nowrap items-center justify-between">List all users <FaChevronRight /></li>
           </Link>
 
