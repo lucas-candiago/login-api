@@ -2,6 +2,7 @@
 
 import { ChangeEvent, useContext, useState } from "react";
 import AuthContext from '@/app/contexts/AuthContext';
+import Link from "next/link";
 
 export default function Login() {
   const { login } = useContext(AuthContext);
@@ -99,6 +100,9 @@ export default function Login() {
             >
               Sign in
             </button>
+            <Link href="register" className="flex w-full mt-3 justify-center rounded-md bg-cyan-500 px-3 py-1.5 font-semibold text-white shadow-sm hover:bg-cyan-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-700">
+              Sign up
+            </Link>
           </div>
         </form>
       </div>

@@ -5,6 +5,7 @@ import {
     LoginData,
     AuthContextData,
     ChangeData,
+    RegisterData,
     AuthProviderProps
 } from "@/types";
 import nookies, { setCookie } from "nookies";
@@ -26,8 +27,16 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
             email,
             password
         }).then(res => {
+            const userName = res.data.user.name
             const token = res.data.token;
+
+            // save token and userName in cookies
             setCookie(null, "auth_token", token, {
+                path: "/",
+                maxAge: ONE_HOUR
+            });
+
+            setCookie(null, "userName", userName, {
                 path: "/",
                 maxAge: ONE_HOUR
             });
@@ -43,6 +52,19 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
             console.log("Unexpected error during login");
             router.push('/login');
+        });
+    };
+
+    const register = async ({ name, email, password, setErrorMsg }: RegisterData) => {
+        await axios.post("/register/", {
+            name,
+            email,
+            password
+        }).then(res => {
+            if (res.status == 201) login({ email, password, setErrorMsg })
+        }).catch(error => {
+            console.log("Unexpected error during register", error);
+            router.push('/register');
         });
     };
 
@@ -78,7 +100,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         router.push("/login");
     };
 
-    return <AuthContext.Provider value={{ login, logout, change }}>
+    return <AuthContext.Provider value={{ login, logout, change, register }}>
         {children}
     </AuthContext.Provider>;
 };

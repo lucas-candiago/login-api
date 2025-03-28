@@ -7,6 +7,13 @@ export interface LoginData {
     setErrorMsg: (msg: string | undefined) => void
 }
 
+export interface RegisterData {
+    name: string
+    email: string
+    password: string
+    setErrorMsg: (msg: string | undefined) => void
+}
+
 export interface ChangeData {
     oldPassword: string
     newPassword: string
@@ -18,6 +25,7 @@ export interface AuthContextData {
     login: (data: LoginData) => Promise<void>
     logout: () => void
     change: (data: ChangeData) => Promise<void>
+    register: (data: RegisterData) => Promise<void>
 }
 
 export interface AuthProviderProps {
