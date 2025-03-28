@@ -1,7 +1,8 @@
 const express = require('express')
 const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
 const User = require("../models/User")
-const verifyToken = require("../middlewares/authMiddleware"); // Import verifyToken middleware
+const verifyToken = require("../middlewares/authMiddlewares"); // Import verifyToken middleware
 
 const router = express.Router()
 
@@ -65,5 +66,16 @@ router.post("/change-password", verifyToken, async (req, res) => {
     }
 })
 
+
+// list all users endpoint
+router.get("/all-users", verifyToken, async (req, res) => {
+    try {
+        const users = await User.find()
+
+        res.status(200).json({data: users})
+    } catch (error) {
+        res.status(404).json({message: "Server error"})
+    }
+})
 
 module.exports = router;
