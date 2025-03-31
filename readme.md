@@ -73,7 +73,7 @@ Access the frontend at **http://localhost:3000** and the backend at **http://loc
 ## Authentication Features
 ✅ User registration  
 ✅ Login with email and password  
-✅ Password change with auth token
-✅ List registered users
+✅ Password change with auth token  
+✅ List registered users  
 ✅ Store Auth token in cookies  
-✅ Protect routes with JWT
+✅ Protect routes with JWT  
