@@ -1,8 +1,8 @@
 # Next.js + Express.js Authentication App
 
-Este projeto consiste em um sistema de autenticação fullstack, utilizando **Next.js** para o frontend e **Node.js com Express** para o backend. A aplicação permite login, visualização de usuários, registro e troca de senha, armazenando tokens de autenticação via cookies.
+This project is a fullstack authentication system using **Next.js** for the frontend and **Node.js with Express** for the backend. The application allows users to login, register, change passwords and view a list of registered users, with authentication tokens stored in cookies.
 
-## Tecnologias Utilizadas
+## Tech Stack
 
 ### 🔹 Frontend
 - Next.js
@@ -17,35 +17,35 @@ Este projeto consiste em um sistema de autenticação fullstack, utilizando **Ne
 ### 🔹 Backend
 - Node.js
 - Express.js
-- MongoDB ([como criar o banco de dados](https://www.mongodb.com/resources/products/platform/mongodb-atlas-tutorial))
-- JWT (JSON Web Token) para autenticação
-- bcrypt para hash de senhas
-- cors para permitir requisições de domínios diferentes
-- dotenv para uso de arquivos .env
+- MongoDB ([How to create a MongoDB database?](https://www.mongodb.com/resources/products/platform/mongodb-atlas-tutorial))
+- JWT (JSON Web Token) for authentication
+- bcrypt for encrypt passwords
+- cors to allow cross-origin requests
+- dotenv to manage environment variables
 
 ---
 
-## Como Rodar o Projeto
+## How to run the project
 
-### 1️⃣ Clonar o Repositório
+### 1️⃣ Clone the Repository
 ```bash
 git clone https://github.com/lucas-candiago/login-api
 cd login-api
 ```
 
-### 2️⃣ Configurar as Variáveis de Ambiente
-Crie um arquivo **.env** no backend e adicione as seguintes variáveis:
+### 2️⃣ Configure Environment Variables
+Create a **.env** file in the backend directory and add the following variables:
 ```env
 PORT=5000
 MONGO_URI=mongodb+srv://seuusuario:suasenha@cluster.mongodb.net/dbname
 JWT_SECRET=seuSegredoJWT
 ```
-No frontend, crie um **.env** e adicione:
+In the frontend directory, create a **.env** and add:
 ```env
 NEXT_PUBLIC_API_URL=http://localhost:5000/users/
 ```
 
-### 3️⃣ Instalar Dependências
+### 3️⃣ Install dependencies
 #### Backend
 ```bash
 cd backend
@@ -57,7 +57,7 @@ cd frontend
 npm install
 ```
 
-### 4️⃣ Rodar a Aplicação
+### 4️⃣ Run the application
 #### Backend
 ```bash
 npm run dev
@@ -66,14 +66,14 @@ npm run dev
 ```bash
 npm run dev
 ```
-Acesse o frontend via **http://localhost:3000** e o backend via **http://localhost:5000**.
+Access the frontend at **http://localhost:3000** and the backend at **http://localhost:5000**.
 
 ---
 
-## 🔒 Funcionalidades de Autenticação
-✅ Cadastro de usuários  
-✅ Login com e-mail e senha  
-✅ Troca de senha autenticada  
-✅ Lista de usuários cadastrados  
-✅ Token de autenticação salvo via cookies  
-✅ Proteção de rotas com JWT
+## Authentication Features
+✅ User registration  
+✅ Login with email and password  
+✅ Password change with auth token
+✅ List registered users
+✅ Store Auth token in cookies  
+✅ Protect routes with JWT
