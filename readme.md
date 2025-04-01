@@ -19,7 +19,7 @@ This project is a fullstack authentication system using **Next.js** for the fron
 - Express.js
 - MongoDB ([How to create a MongoDB database?](https://www.mongodb.com/resources/products/platform/mongodb-atlas-tutorial))
 - JWT (JSON Web Token) for authentication
-- bcrypt for encrypt passwords
+- bcrypt for password encryption
 - cors to allow cross-origin requests
 - dotenv to manage environment variables
 
@@ -39,11 +39,20 @@ Create a **.env** file in the backend directory and add the following variables:
 MONGO_URI=mongodb+srv://seuusuario:suasenha@cluster.mongodb.net/dbname
 JWT_SECRET=seuSegredoJWT
 ```
-In the frontend directory, create a **.env** and add:
+In the frontend directory, create a **.env** and add the api url:
 ```env
 NEXT_PUBLIC_API_URL=http://localhost:5000/users/
 ```
 
+## Option 1 - Running with Docker
+#### Run docker-compose
+```bash
+docker-compose up --build
+```
+Now the frontend is running at [http://localhost:3000/](http://localhost:3000/) and the backend at [http://localhost:5000](http://localhost:5000)
+
+
+## Option 2 - Running in your local machine
 ### 3️⃣ Install dependencies
 #### Backend
 ```bash
