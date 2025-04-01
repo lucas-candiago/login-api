@@ -36,7 +36,6 @@ cd login-api
 ### 2️⃣ Configure Environment Variables
 Create a **.env** file in the backend directory and add the following variables:
 ```env
-PORT=5000
 MONGO_URI=mongodb+srv://seuusuario:suasenha@cluster.mongodb.net/dbname
 JWT_SECRET=seuSegredoJWT
 ```
